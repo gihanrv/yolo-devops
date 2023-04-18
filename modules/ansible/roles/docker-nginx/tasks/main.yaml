@@ -1,26 +1,26 @@
 ---
 - name: Install Docker
-  become: true
   apt:
     name: docker.io
     state: present
 
 - name: Start Docker service
-  become: true
   service:
     name: docker
     state: started
 
 - name: Copy Dockerfile to host
-  become: true
   copy:
     src: file/Dockerfile
     dest: /tmp
 
+- name: Copy nginx index.html to host
+  copy:
+    src: templates
+    dest: /tmp
+
 - name: Build Docker image
-  become: true
-  command: "docker build -t {{stack_name}}-image /tem"
+  command: "docker build -t {{stack_name}}-image /tmp"
 
 - name: Run Docker container
-  become: true
   command: "docker run -d -p 80:80 -v /var/log/nginx:/var/log/nginx --name {{stack_name}}-container {{stack_name}}-image"
