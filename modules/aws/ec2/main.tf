@@ -32,7 +32,13 @@ resource "aws_instance" "instance" {
   key_name                = var.key_name
   vpc_security_group_ids  = [aws_security_group.ec2_sg.id]
   subnet_id               = element(var.subnet_ids, count.index)
-  user_data               = data.template_file.user_data.rendered
+
+  user_data               = templatefile("${path.module}/conf/${local.stack_name}.tpl",{git_repo_url = var.git_repo_url,
+                             git_repo_name =  var.git_repo_name,
+                             git_branch = var.git_branch,
+                             message = element(var.instance_names, count.index),
+                             stack = var.stack})
+
   iam_instance_profile    = aws_iam_instance_profile.ec2_instance_profile.name
   disable_api_termination = var.disable_api_termination
   volume_tags             = merge(tomap({ "Name" = format("%s", var.instance_names[count.index]) }), var.common_tags)
