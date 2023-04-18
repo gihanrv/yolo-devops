@@ -1,0 +1,14 @@
+---
+- name: Install Docker and Nginx with Jinja2 template
+  hosts: localhost
+  become: true
+
+  roles:
+  - docker-nginx
+  - cloudwatch-agent
+  vars:
+    title: "Welcome to my website"
+    message: "Hello, {{instance_names}} !"
+    cloudwatch_log_group: "/var/logs"
+    instance_id: "{{instance_names}}"
+    stack_name: "{{stack_name}}"
