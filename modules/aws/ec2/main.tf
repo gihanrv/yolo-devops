@@ -32,7 +32,7 @@ resource "aws_instance" "instance" {
   key_name                = var.key_name
   vpc_security_group_ids  = [aws_security_group.ec2_sg.id]
   subnet_id               = element(var.subnet_ids, count.index)
-  user_data               = filebase64("${path.module}/conf/${local.stack_name}.tpl",)
+  user_data               = data.template_file.user_data.rendered
   iam_instance_profile    = aws_iam_instance_profile.ec2_instance_profile.name
   disable_api_termination = var.disable_api_termination
   volume_tags             = merge(tomap({ "Name" = format("%s", var.instance_names[count.index]) }), var.common_tags)
