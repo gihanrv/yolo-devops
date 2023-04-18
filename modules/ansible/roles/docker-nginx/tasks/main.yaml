@@ -8,6 +8,7 @@
   service:
     name: docker
     state: started
+    enabled: yes
 
 - name: Copy Dockerfile to host
   copy:
@@ -15,9 +16,9 @@
     dest: /tmp
 
 - name: Copy nginx index.html to host
-  copy:
-    src: templates
-    dest: /tmp
+  template:
+    src: templates/index.html.j2
+    dest: /tmp/index.html
 
 - name: Build Docker image
   command: "docker build -t {{stack_name}}-image /tmp"

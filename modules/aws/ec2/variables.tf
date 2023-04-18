@@ -50,10 +50,24 @@ variable "user_data" {
   default     = null
 }
 
-# variable "instance_iam_role" {
-#   description = "IAM Role an EC2 instance is launched with"
-#   type        = string
-# }
+variable "git_repo_url" {
+  description = "Ansible git repo url"
+  type        = string
+  default     = "https://github.com/gihanrv/yolo-devops.git"
+}
+
+variable "git_repo_name" {
+  description = "Ansible git repo name"
+  type        = string
+  default     = "yolo-devops"
+}
+
+
+variable "git_branch" {
+  description = "git branch of asible repo"
+  type        = string
+  default     = "master"
+}
 
 variable "key_name" {
   description = "pem key name to access instance"
