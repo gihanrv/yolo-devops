@@ -88,7 +88,7 @@ variable "cloudwatch_log_group" {
 variable "cloudwatch_log_file_path" {
   description = "cloud watch log path that you wish to collects logs"
   type        = string
-  default     = "/var/log/nginx/"
+  default     = "/var/log/nginx/access.log"
 }
 
 variable "root_ebs_size" {

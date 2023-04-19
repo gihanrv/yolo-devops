@@ -30,11 +30,6 @@ dependency vpc {
 inputs = {
   common_tags             = merge(local.default_tags, local.group_vars.locals)   
   stack                   = "ec2"
-  cloudwatch_log_group_name =  "/var/log/nginx/"
-  cloudwatch_log_subscription_name   = "docker-nginx-logs-filter"
-  cloudwatch_log_destination_name =  "nginx-logs"
-  #aws_region = local.aws_region
-  # user_data               = var.user_data
-  #instance_iam_role       = var.instance_iam_role
+  cloudwatch_log_group_name =  "dev-nginx-logs"
 
 }

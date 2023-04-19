@@ -33,15 +33,3 @@ variable "cloudwatch_log_group_name" {
   type        = string
   default     = null
 }
-
-variable "cloudwatch_log_destination_name" {
-  description = "cloudwatch log destination name"
-  type        = string
-  default     = null
-}
-
-variable "cloudwatch_log_subscription_name" {
-  description = "cloudwatch log subscription name"
-  type        = string
-  default     = null
-}
