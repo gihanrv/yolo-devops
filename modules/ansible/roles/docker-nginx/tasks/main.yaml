@@ -12,7 +12,7 @@
 
 - name: Copy Dockerfile to host
   copy:
-    src: file/Dockerfile
+    src: files/Dockerfile
     dest: /tmp
 
 - name: Copy nginx index.html to host
