@@ -30,7 +30,7 @@ dependency vpc {
 inputs = {
   common_tags             = merge(local.default_tags, local.group_vars.locals)   
   stack                   = "ec2"
-  instance_names          = ["dev-server01","dev-server02","dev-server03"]
+  instance_names          = ["server1","server2","server3"]
   ami                     = "ami-007855ac798b5175e"
   instance_type           = "t2.micro"
   key_name                = local.ec2_ssh_key
