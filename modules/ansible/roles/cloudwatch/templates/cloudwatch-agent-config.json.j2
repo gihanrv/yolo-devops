@@ -11,18 +11,13 @@
         "collect_list": [
           {
             "file_path": "{{log_file_path}}access.log",
-            "log_group_name": "{{cloudwatch_log_group}}-access",
-            "log_stream_name": "{{instance_id}}-access-log",
-            "timezone": "EET"
-          },
-          {
-            "file_path": "{{log_file_path}}error.log",
-            "log_group_name": "{{cloudwatch_log_group}}-error",
-            "log_stream_name": "{{instance_id}}-error-log",
-            "timezone": "EET"
-          }        
+            "log_group_name": "{{cloudwatch_log_group}}",
+            "log_stream_name": "{{instance_id}}",
+            "timezone": "UTC"
+          }
         ]
       }
-    }
+    },
+    "log_stream_name": "{{instance_id}}"
   }
 }
