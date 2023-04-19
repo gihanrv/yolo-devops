@@ -29,7 +29,7 @@ dependency vpc {
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
   common_tags             = merge(local.default_tags, local.group_vars.locals)   
-  stack                   = "ec2"
-  cloudwatch_log_group_name = [ "dev-nginx-logs-access", "dev-nginx-logs-error"]
+  stack                   = "cloudwatch"
+  cloudwatch_log_group_name = [ "dev-nginx-logs-type-access", "dev-nginx-logs-type-error"]
 
 }
