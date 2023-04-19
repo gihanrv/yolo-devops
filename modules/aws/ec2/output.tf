@@ -18,3 +18,4 @@ output "ec2_instance_private_ip" {
   description = "EC2 instance ID"
   value       = aws_instance.instance.*.private_ip
 }
+

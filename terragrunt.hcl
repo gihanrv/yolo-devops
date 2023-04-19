@@ -8,6 +8,7 @@ locals {
 
   # Extract the variables we need for easy access
   aws_region       = local.environment_vars.locals.aws_region
+  aws_account_id   = local.environment_vars.locals.aws_account_id
   aws_region_short = local.environment_vars.locals.aws_region_short
   environment      = local.environment_vars.locals.environment
   aws_profile      = local.environment_vars.locals.aws_profile

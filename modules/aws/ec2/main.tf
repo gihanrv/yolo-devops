@@ -36,8 +36,11 @@ resource "aws_instance" "instance" {
   user_data               = base64encode(templatefile("${path.module}/conf/${local.stack_name}.tpl",{git_repo_url = var.git_repo_url,
                              git_repo_name =  var.git_repo_name,
                              git_branch = var.git_branch,
-                             message = element(var.instance_names, count.index),
-                             stack = var.stack}))
+                             server_name = element(var.instance_names, count.index),
+                             stack = var.stack,
+                             cloudwatch_log_group = var.cloudwatch_log_group,
+                             log_file_path = var.cloudwatch_log_file_path
+                             }))
 
   iam_instance_profile    = aws_iam_instance_profile.ec2_instance_profile.name
   disable_api_termination = var.disable_api_termination

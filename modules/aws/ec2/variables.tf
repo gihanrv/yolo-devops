@@ -79,10 +79,17 @@ variable "subnet_ids" {
   type        = list(any)
 }
 
-# variable "security_group" {
-#   description = "A map for security groups"
-#   type        = list(any)
-# }
+variable "cloudwatch_log_group" {
+  description = "cloud watch log group name that you wish to send logs"
+  type        = string
+  default     = "/var/log/nginx/"
+}
+
+variable "cloudwatch_log_file_path" {
+  description = "cloud watch log path that you wish to collects logs"
+  type        = string
+  default     = "/var/log/nginx/"
+}
 
 variable "root_ebs_size" {
   description = "Size for root drive"
