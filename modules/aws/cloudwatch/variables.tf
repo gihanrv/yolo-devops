@@ -29,7 +29,7 @@ variable "common_tags" {
 }
 
 variable "cloudwatch_log_group_name" {
-  description = "cloudwatch log greoup name"
-  type        = string
-  default     = null
+  description = "cloud watch log group name that you wish to send logs"
+  type        = list
+  default     = []
 }

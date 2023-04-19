@@ -30,6 +30,6 @@ dependency vpc {
 inputs = {
   common_tags             = merge(local.default_tags, local.group_vars.locals)   
   stack                   = "ec2"
-  cloudwatch_log_group_name =  "dev-nginx-logs"
+  cloudwatch_log_group_name = [ "dev-nginx-logs-access", "dev-nginx-logs-error"]
 
 }
