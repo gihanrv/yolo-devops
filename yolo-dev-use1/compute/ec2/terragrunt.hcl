@@ -18,9 +18,9 @@ include {
   path = find_in_parent_folders()
 }
 
-dependencies {
-  paths = ["../../network/vpc"]
-}
+# dependencies {
+#   paths = ["../../network/vpc"]
+# }
 
 dependency vpc {
   config_path = "../../network/vpc"
