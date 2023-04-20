@@ -18,9 +18,10 @@ include {
   path = find_in_parent_folders()
 }
 
-# dependencies {
-#   paths = ["../../network/vpc"]
-# }
+# Incude dependency modules,
+dependencies {
+  paths = ["../../network/vpc", ".../../logs/cloudwatch"]
+}
 
 dependency vpc {
   config_path = "../../network/vpc"

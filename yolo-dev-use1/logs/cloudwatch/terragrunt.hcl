@@ -17,7 +17,7 @@ terraform {
 include {
   path = find_in_parent_folders()
 }
-
+# Incude dependency modules, 
 dependencies {
   paths = ["../../network/vpc"]
 }
@@ -25,7 +25,7 @@ dependencies {
 dependency vpc {
   config_path = "../../network/vpc"
 }
-# profile     = "yolo-nonprod" # changed it your aws profile name (cat .aws/config)
+
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
   common_tags             = merge(local.default_tags, local.group_vars.locals)   

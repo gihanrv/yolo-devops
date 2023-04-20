@@ -17,6 +17,11 @@ include {
   path = find_in_parent_folders()
 }
 
+# Incude dependency modules, 
+dependencies {
+  paths = ["../vpc", "../../compute/ec2"]
+}
+
 dependency vpc {
   config_path = "../vpc"
 }
@@ -69,13 +74,14 @@ inputs = {
   #Register Target
   instance_ids                  =  dependency.ec2.outputs.ec2_instance_id
 
+ # security group rules for ALB 
   security_group_rules_ingress = [
     {
       from_port   = 80
       to_port     = 80
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
-      description = "default ngix allow security group"
+      description = "allow nginx port"
     }
   ]
 
