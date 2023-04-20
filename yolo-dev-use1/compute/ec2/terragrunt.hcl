@@ -51,13 +51,6 @@ inputs = {
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
       description = "default ssh allow security group"
-    },
-    {
-      from_port   = 80
-      to_port     = 80
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
-      description = "default ngix allow security group"
     }
   ]
 

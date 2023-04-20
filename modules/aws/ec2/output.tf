@@ -19,3 +19,7 @@ output "ec2_instance_private_ip" {
   value       = aws_instance.instance.*.private_ip
 }
 
+output "ec2_instance_security_group_id" {
+  description = "EC2 SG ID"
+  value       = aws_security_group.ec2_sg[0].id
+}
