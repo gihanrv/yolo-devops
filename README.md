@@ -58,6 +58,7 @@ chmod 775 install.sh && ./install.sh
    
   ### Destroy
 4. Run uninstall.sh shell script  and Enter 'y' Destroy changes
+* Please note that S3 bucket and Dynamodb table will not be delete ! you have to manually delete them
 ```
 chmod 775 uninstall.sh && ./uninstall.sh
 
