@@ -54,7 +54,12 @@ chmod 775 install.sh && ./install.sh
 * This script will perform the following actions:
   - Install Terraform and Terragrunt
   - move to [yolo-dev-use1](yolo-dev-use1) folder and execute terragrunt run-all apply (auto-approve creating backend S3 and applying Terragrunt changes)
-  
+   
+  ### Destroy
+4. Run uninstall.sh shell script 
+```
+chmod 775 uninstall.sh && ./uninstall.sh
+```
  ## Terragrunt modules dependancy
 ![terragrunt](https://user-images.githubusercontent.com/29304495/233380438-f9286a8b-e65c-4883-9b24-f44490f44fcb.svg)
 
