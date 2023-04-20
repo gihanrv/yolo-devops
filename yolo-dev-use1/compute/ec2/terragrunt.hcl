@@ -20,7 +20,7 @@ include {
 
 # Incude dependency modules,
 dependencies {
-  paths = ["../../network/vpc", ".../../logs/cloudwatch"]
+  paths = ["../../network/vpc", "../../logs/cloudwatch"]
 }
 
 dependency vpc {
