@@ -57,10 +57,16 @@ variable "common_tags" {
   default     = {}
 }
 
-# variable "lb_arn" {
-#   description = "ALB arn"
-#   type        = list(any)
-# }
+variable "create_sg_group_rule" {
+  description = "create security group rule  to allow alb traffic"
+  type        = bool
+  default     = false
+}
+
+variable "source_security_group_id" {
+  description = "security group id to allow alb traffic"
+  type        = string
+}
 
 variable "security_group_rules_ingress" {
   description = "List of security group rules for ec2 default security group"

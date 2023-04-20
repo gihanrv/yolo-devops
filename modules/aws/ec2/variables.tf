@@ -17,6 +17,19 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "create_sg_group" {
+  description = "create security group to controll traffic"
+  type        = bool
+  default     = true
+}
+
+variable "security_group_ids" {
+  description = "SG ids for controll access instances"
+  type        = list(any)
+  default     = []
+}
+
+
 variable "security_group_rules" {
   description = "List of security group rules for ec2 default security group"
   type = list(object({

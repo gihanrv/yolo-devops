@@ -96,4 +96,9 @@ inputs = {
 
     }
   ]
+
+  #Allow traffic only from ALB
+  create_sg_group_rule     = true
+  source_security_group_id = dependency.ec2.outputs.ec2_instance_security_group_id
 }
+

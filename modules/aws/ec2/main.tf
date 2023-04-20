@@ -1,4 +1,5 @@
 resource "aws_security_group" "ec2_sg" {
+  count       = var.create_sg_group ? 1 : 0
   name        = local.stack_name
   description = format("%s %s ACL", local.stack_name, var.stack)
   vpc_id      = data.aws_vpc.this.id
@@ -30,7 +31,7 @@ resource "aws_instance" "instance" {
   ami                    = var.ami
   instance_type          = var.instance_type
   key_name               = var.key_name
-  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  vpc_security_group_ids = length(var.security_group_ids) != 0 ? var.security_group_ids : [aws_security_group.ec2_sg[0].id]
   subnet_id              = element(var.subnet_ids, count.index)
 
   user_data = base64encode(templatefile("${path.module}/conf/${local.stack_name}.tpl", { git_repo_url = var.git_repo_url,

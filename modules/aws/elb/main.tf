@@ -1,3 +1,4 @@
+#Create SG for ALB
 resource "aws_security_group" "elb_sg" {
   name        = local.stack_name
   description = format("%s %s ACL", local.stack_name, var.stack)
@@ -29,6 +30,7 @@ resource "aws_security_group" "elb_sg" {
   }
 }
 
+#Create TG for ALB
 resource "aws_lb_target_group" "tg-service" {
   count                = var.create_tg ? 1 : 0
   name                 = var.lb_tg_name
@@ -45,6 +47,18 @@ resource "aws_lb_target_group" "tg-service" {
     matcher             = var.lb_tg_health_check_matcher
   }
   tags = merge(tomap({ "Name" = format("%s", var.lb_tg_name) }), var.common_tags)
+}
+
+#Allow ALB trafic to the target group's ec2 instances
+#>> This should be modified with count to add rules for givan ports
+resource "aws_security_group_rule" "ec2_nodes" {
+  count                    = var.create_sg_group_rule ? 1 : 0
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
+  security_group_id        = var.source_security_group_id #ec2 instance sequrity group id
+  source_security_group_id = aws_security_group.elb_sg.id
 }
 
 
