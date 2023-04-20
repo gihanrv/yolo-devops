@@ -31,7 +31,10 @@ Ansible works by running tasks on remote hosts over SSH, making it agentless and
 ```
 
 ### Prerequisites
-
+  - terragrunt
+  - terrform
+* Note: If you don't have Terraform and Terragrunt installed, the installation script will install the latest versions of both tools.
+  
 ### You must have aws cli access before executes install.sh 
 
 2. Change following varible names in [env.hcl](yolo-dev-use1/env.hcl) file base on your aws accouts settings
@@ -41,15 +44,14 @@ Ansible works by running tasks on remote hosts over SSH, making it agentless and
   - aws_profile : default = "default"
   - aws_account_id (Optional) 
   
-* terrfrom : if you don't have it will install latest version when run install.sh
-* terrgrunt if you don't have it will install latest version when run install.sh
+
 ```
 ### Installation
 3. Run install.sh shell script 
 ```
 chmod 775 install.sh && ./install.sh
 ```
-* this ishcript will do 
-  - install terrform and terragrunt
-  - move to [yolo-dev-use1](yolo-dev-use1) folder and run "terragrunt run-all apply"  (auto approve create backend s3 and terragrunt apply)
+* This script will perform the following actions:
+  - Install Terraform and Terragrunt
+  - move to [yolo-dev-use1](yolo-dev-use1) folder and execute terragrunt run-all apply (auto-approve creating backend S3 and applying Terragrunt changes)
 
