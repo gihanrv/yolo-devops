@@ -32,7 +32,7 @@ Ansible works by running tasks on remote hosts over SSH, making it agentless and
 
 ### Prerequisites
 
-## You must have aws cli access before executes install.sh 
+### You must have aws cli access before executes install.sh 
 
 2. Change following varible names in [env.hcl](yolo-dev-use1/env.hcl) file base on your aws accouts settings
 ```
@@ -49,4 +49,7 @@ Ansible works by running tasks on remote hosts over SSH, making it agentless and
 ```
 chmod 775 install.sh && ./install.sh
 ```
+* this ishcript will do 
+  - install terrform and terragrunt
+  - move to [yolo-dev-use1](yolo-dev-use1) folder and run "terragrunt run-all apply"  (auto approve create backend s3 and terragrunt apply)
 
