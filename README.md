@@ -54,4 +54,12 @@ chmod 775 install.sh && ./install.sh
 * This script will perform the following actions:
   - Install Terraform and Terragrunt
   - move to [yolo-dev-use1](yolo-dev-use1) folder and execute terragrunt run-all apply (auto-approve creating backend S3 and applying Terragrunt changes)
+  
+ ## Terragrunt modules dependancy
+![terragrunt](https://user-images.githubusercontent.com/29304495/233380438-f9286a8b-e65c-4883-9b24-f44490f44fcb.svg)
+
+### Referance 
+  - https://terragrunt.gruntwork.io/
+  - https://www.padok.fr/en/blog/terraform-code-terragrunt
+  - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/tempfile_module.html
 
