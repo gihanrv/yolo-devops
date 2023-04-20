@@ -39,8 +39,5 @@ echo "Checking Terragrunt . . ."
 
 alias brc='source ~/.bashrc'
 cd yolo-dev-use1/
-echo "This will run terragrunt run-all apply and pass 'y' for create backend S3 bucket and apply changes"
-terragrunt run-all apply << EOF
-y
-y
-EOF
+echo -e "\n This will run terragrunt run-all apply and pass 'y' for create backend S3 bucket and apply changes"
+terragrunt run-all apply
