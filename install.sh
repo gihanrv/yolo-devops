@@ -1,6 +1,6 @@
 #!/bin/bash
-
 function terraform-install() {
+echo "Checking Terraform . . ."
   [[ -f ${HOME}/bin/terraform ]] && echo "`${HOME}/bin/terraform version` already installed at ${HOME}/bin/terraform" && return 0
 
     LATEST_URL=$(curl -sL https://releases.hashicorp.com/terraform/index.json | jq -r '.versions[].builds[].url' | egrep -v 'rc|beta' | egrep 'linux.*amd64' |tail -1)
@@ -18,6 +18,7 @@ function terraform-install() {
 
 
 function terragrunt-install() {
+echo "Checking Terragrunt . . ."
 	[[ -f ${HOME}/bin/terragrunt ]] && echo "Terragrunt `${HOME}/bin/terragrunt | grep -iA 2 version | tr -d '\n'` already installed at ${HOME}/bin/terragrunt" && return 0
 
 	LATEST_URL=$(curl -sL  https://api.github.com/repos/gruntwork-io/terragrunt/releases  | jq -r '.[0].assets[].browser_download_url' | egrep 'linux.*amd64' | tail -1)
@@ -35,9 +36,8 @@ function terragrunt-install() {
 					    terraform-install
 					    terragrunt-install
 
-			cat - << EOF
-EOF
-source ~/.bashrc
+
+alias brc='source ~/.bashrc'
 cd yolo-dev-use1/
 echo "This will run terragrunt run-all apply and pass 'y' for create backend S3 bucket and apply changes"
 terragrunt run-all apply << EOF
