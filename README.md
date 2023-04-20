@@ -27,7 +27,7 @@ Ansible works by running tasks on remote hosts over SSH, making it agentless and
 ## Getting Started
 1. Clone the repository to your local machine using the following command:
 ```
-   git clone https://github.com/gihanrv/yolo-devops.git
+git clone https://github.com/gihanrv/yolo-devops.git
 ```
 
 ### Prerequisites
