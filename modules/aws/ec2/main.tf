@@ -14,11 +14,11 @@ resource "aws_security_group" "ec2_sg" {
     }
   }
   egress {
-  from_port   = 0
-  to_port     = 0
-  protocol    = "-1"
-  cidr_blocks = ["0.0.0.0/0"]
-}
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags = {
     Name = local.stack_name
@@ -26,21 +26,21 @@ resource "aws_security_group" "ec2_sg" {
 }
 
 resource "aws_instance" "instance" {
-  count = length(var.instance_names)
-  ami                     = var.ami
-  instance_type           = var.instance_type
-  key_name                = var.key_name
-  vpc_security_group_ids  = [aws_security_group.ec2_sg.id]
-  subnet_id               = element(var.subnet_ids, count.index)
+  count                  = length(var.instance_names)
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  subnet_id              = element(var.subnet_ids, count.index)
 
-  user_data               = base64encode(templatefile("${path.module}/conf/${local.stack_name}.tpl",{git_repo_url = var.git_repo_url,
-                             git_repo_name =  var.git_repo_name,
-                             git_branch = var.git_branch,
-                             server_name = element(var.instance_names, count.index),
-                             stack = var.stack,
-                             cloudwatch_log_group = var.cloudwatch_log_group,
-                             log_file_path = var.cloudwatch_log_file_path
-                             }))
+  user_data = base64encode(templatefile("${path.module}/conf/${local.stack_name}.tpl", { git_repo_url = var.git_repo_url,
+    git_repo_name        = var.git_repo_name,
+    git_branch           = var.git_branch,
+    server_name          = element(var.instance_names, count.index),
+    stack                = var.stack,
+    cloudwatch_log_group = var.cloudwatch_log_group,
+    log_file_path        = var.cloudwatch_log_file_path
+  }))
 
   iam_instance_profile    = aws_iam_instance_profile.ec2_instance_profile.name
   disable_api_termination = var.disable_api_termination

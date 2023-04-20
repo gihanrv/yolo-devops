@@ -1,5 +1,5 @@
 locals {
-  stack_name      = "${var.stack}-${var.environment}"
+  stack_name = "${var.stack}-${var.environment}"
 }
 
 variable "stack" {

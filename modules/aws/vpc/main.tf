@@ -140,7 +140,7 @@ resource "aws_route" "public_internet_gateway" {
   timeouts {
     create = "5m"
   }
- depends_on = [aws_internet_gateway.this, aws_route_table.public]
+  depends_on = [aws_internet_gateway.this, aws_route_table.public]
 
 }
 
@@ -154,7 +154,7 @@ resource "aws_route_table_association" "private" {
   route_table_id = element(aws_route_table.private[*].id,
   (var.single_nat_gateway ? 0 : count.index))
 
-depends_on = [aws_subnet.private, aws_route_table.private]
+  depends_on = [aws_subnet.private, aws_route_table.private]
 }
 
 

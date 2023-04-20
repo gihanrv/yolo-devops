@@ -1,5 +1,5 @@
 locals {
-  stack_name      = "${var.stack}-${var.environment}"
+  stack_name = "${var.stack}-${var.environment}"
 }
 
 variable "stack" {
@@ -178,21 +178,21 @@ variable "lb_list_create_http_listner" {
 }
 
 variable "lb_list_ssl_policy" {
-  type = string
-  default     = ""
+  type    = string
+  default = ""
 }
 
 variable "lb_list_certificate_arn" {
-  type = string
-  default     = ""
+  type    = string
+  default = ""
 }
 
 variable "lb_list_rule_service_url" {
-  type = string
-  default     = ""
+  type    = string
+  default = ""
 }
 
 variable "lb_list_rule_http_listner_arn" {
-  type = string
-  default     = ""
+  type    = string
+  default = ""
 }

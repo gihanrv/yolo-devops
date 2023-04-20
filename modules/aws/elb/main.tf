@@ -21,7 +21,7 @@ resource "aws_security_group" "elb_sg" {
       protocol    = egress.value.protocol
       cidr_blocks = egress.value.cidr_blocks
       description = egress.value.description
-  }
+    }
   }
 
   tags = {
@@ -53,17 +53,17 @@ resource "aws_lb" "lb" {
   name                       = var.lb_name
   internal                   = var.lb_internal
   load_balancer_type         = var.lb_type
-  security_groups            = [aws_security_group.elb_sg.id]  #var.lb_security_groups
+  security_groups            = [aws_security_group.elb_sg.id] #var.lb_security_groups
   subnets                    = var.lb_subnets
   enable_deletion_protection = var.enable_deletion_protection
-  tags = merge(tomap({ "Name" = format("%s", var.lb_name) }), var.common_tags)
+  tags                       = merge(tomap({ "Name" = format("%s", var.lb_name) }), var.common_tags)
 
 }
 
 ###aws_lb_listener
 
 resource "aws_lb_listener" "lb-listner-http" {
-  count = var.lb_list_create_http_listner ? 1 : 0
+  count             = var.lb_list_create_http_listner ? 1 : 0
   load_balancer_arn = aws_lb.lb[0].arn
   port              = "80"
   protocol          = "HTTP"
@@ -75,7 +75,7 @@ resource "aws_lb_listener" "lb-listner-http" {
 }
 
 resource "aws_lb_listener" "lb-listner-https" {
-  count = var.lb_list_service_ssl_enabled ? 1 : 0
+  count             = var.lb_list_service_ssl_enabled ? 1 : 0
   load_balancer_arn = aws_lb.lb[0].arn
   port              = "443"
   protocol          = "HTTPS"

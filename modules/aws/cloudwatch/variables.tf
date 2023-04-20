@@ -1,5 +1,5 @@
 locals {
-  stack_name      = "${var.stack}-${var.environment}"
+  stack_name = "${var.stack}-${var.environment}"
 }
 
 variable "stack" {
@@ -30,6 +30,6 @@ variable "common_tags" {
 
 variable "cloudwatch_log_group_name" {
   description = "cloud watch log group name that you wish to send logs"
-  type        = list
+  type        = list(any)
   default     = []
 }

@@ -1,11 +1,11 @@
 # Create the IAM policy that allows publishing to CloudWatch Logs
 resource "aws_iam_policy" "logs_publish" {
-  name        = "cloudwatch-logs-publish"
-  policy      = jsonencode({
+  name = "cloudwatch-logs-publish"
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Action   = [
+        Action = [
           "logs:CreateLogGroup",
           "logs:CreateLogStream",
           "logs:PutLogEvents"
