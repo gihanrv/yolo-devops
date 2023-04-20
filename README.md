@@ -32,19 +32,21 @@ Ansible works by running tasks on remote hosts over SSH, making it agentless and
 
 ### Prerequisites
 
-The things you need before installing the software.
+## You must have aws cli access before executes install.sh 
 
-* You need this
-* And you need this
-* Oh, and don't forget this
-
-### Installation
-
-A step by step guide that will tell you how to get the development environment up and running.
-
+2. Change following varible names in [env.hcl](yolo-dev-use1/env.hcl) file base on your aws accouts settings
 ```
-$ First step
-$ Another step
-$ Final step
+  - aws_region : default  = "us-east-1"
+  - aws_region_short : default = "use1"
+  - aws_profile : default = "default"
+  - aws_account_id (Optional) 
+  
+* terrfrom : if you don't have it will install latest version when run install.sh
+* terrgrunt if you don't have it will install latest version when run install.sh
+```
+### Installation
+3. Run install.sh shell script 
+```
+chmod 775 install.sh && ./install.sh
 ```
 
