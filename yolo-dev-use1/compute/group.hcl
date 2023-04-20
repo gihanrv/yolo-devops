@@ -1,3 +1,3 @@
-locals{
-    group = "compute"
+locals {
+  group = "compute"
 }

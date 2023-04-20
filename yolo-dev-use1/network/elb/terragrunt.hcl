@@ -33,17 +33,17 @@ dependency ec2 {
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
   #ALB Vars
-  stack                      = "alb"  
+  stack                      = "alb"
   create_lb                  = true
   lb_name                    = "yolo-alb-dev"
   lb_internal                = false
   lb_type                    = "application"
   lb_subnets                 = dependency.vpc.outputs.public_subnets
   enable_deletion_protection = false
-  common_tags                = merge(local.default_tags, local.group_vars.locals) 
+  common_tags                = merge(local.default_tags, local.group_vars.locals)
 
   # Target Group Vars
-  create_tg                   = true
+  create_tg = true
   # lb_arn                      = ""
   vpc_id                      = dependency.vpc.outputs.vpc_id
   lb_tg_name                  = "yolo-tg-dev"
@@ -70,11 +70,11 @@ inputs = {
   lb_list_rule_service_http_enabled = false
   lb_list_rule_service_url          = ""
   lb_list_rule_http_listner_arn     = ""
-  
-  #Register Target
-  instance_ids                  =  dependency.ec2.outputs.ec2_instance_id
 
- # security group rules for ALB 
+  #Register Target
+  instance_ids = dependency.ec2.outputs.ec2_instance_id
+
+  # security group rules for ALB 
   security_group_rules_ingress = [
     {
       from_port   = 80
@@ -87,13 +87,13 @@ inputs = {
 
   security_group_rules_egress = [
     {
-      
+
       from_port   = 0
       to_port     = 0
       protocol    = "-1"
       cidr_blocks = ["0.0.0.0/0"]
       description = "default outbound rule"
-    
+
     }
   ]
 }

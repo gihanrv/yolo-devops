@@ -29,14 +29,14 @@ dependency vpc {
 # profile     = "yolo-nonprod" # changed it your aws profile name (cat .aws/config)
 # These are the variables we have to pass in to use the module specified in the terragrunt configuration above
 inputs = {
-  common_tags             = merge(local.default_tags, local.group_vars.locals)   
-  stack                   = "ec2"
-  instance_names          = ["server1","server2","server3"]
-  ami                     = "ami-007855ac798b5175e"
-  instance_type           = "t2.micro"
-  key_name                = local.ec2_ssh_key
-  subnet_ids              = dependency.vpc.outputs.public_subnets
-  vpc_id                  = dependency.vpc.outputs.vpc_id
+  common_tags    = merge(local.default_tags, local.group_vars.locals)
+  stack          = "ec2"
+  instance_names = ["server1", "server2", "server3"]
+  ami            = "ami-007855ac798b5175e"
+  instance_type  = "t2.micro"
+  key_name       = local.ec2_ssh_key
+  subnet_ids     = dependency.vpc.outputs.public_subnets
+  vpc_id         = dependency.vpc.outputs.vpc_id
   # subnet_ids              = var.subnet_ids
   # user_data               = var.user_data
   #instance_iam_role       = var.instance_iam_role

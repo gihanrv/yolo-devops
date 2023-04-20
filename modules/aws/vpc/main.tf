@@ -45,7 +45,6 @@ resource "aws_subnet" "private" {
 
 }
 
-
 # Internet Gateway
 resource "aws_internet_gateway" "this" {
   count = length(var.public_subnets) > 0 ? 1 : 0

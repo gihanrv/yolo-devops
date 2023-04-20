@@ -1,3 +1,3 @@
-locals{
-    group = "logs"
+locals {
+  group = "logs"
 }
