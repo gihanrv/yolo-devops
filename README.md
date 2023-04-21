@@ -44,8 +44,13 @@ git clone https://github.com/gihanrv/yolo-devops.git
   - aws_profile : default = "default"
   - aws_account_id (Optional) 
   
-
 ```
+* Note : It's considered a best practice to create EC2 instances on private subnets and EC2-related configurations are located in the [ansible](modules/ansible) and deployment.yaml playbook is executed in userdata.
+ * 👍 If you wish to SSH to EC2 instances, you can replace line 38 in [ec2/terragrunt.hcl](yolo-dev-use1/compute/ec2/terragrunt.hcl) file https://github.com/gihanrv/yolo-devops/blob/8158f3a56dbf9b95ad005e6f644db6372a2c69ea/yolo-dev-use1/compute/ec2/terragrunt.hcl#L38 
+with --> ```subnet_ids = dependency.vpc.outputs.public_subnets```
+
+This will allow you to create EC2 instances in the public subnets.
+
 ### Installation
 3. Run install.sh shell script  and Enter 'y' Create Backend S3 bucket and Enter 'y' apply changes
 ```
