@@ -1,6 +1,6 @@
 # DevOps / SRE Task
 
-# This repository contains a slution for follwing tasks
+# This repository provides a solution for the following tasks
 
 * Deploy follwing service on AWS using IaaC Terrom and Terrgrunt
   - VPC 10.161.0.0/24.
