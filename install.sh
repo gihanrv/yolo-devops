@@ -45,10 +45,14 @@ fi
 					    terragrunt-install
 
 if [[ $OSTYPE != 'darwin'* ]]; then
-          echo 'Reload Bash Profile'
-          alias brc='source ~/.bashrc'
+echo -e  "\n******** Pexecute the following command ******* \n"
+echo -e "Pass 'y' for next two questions \n"
+echo "-----------------------------------------------------------"
+echo "source ~/.bashrc  && cd yolo-dev-use1/ && terragrunt run-all apply"
+echo "-----------------------------------------------------------"
+	  
 fi
 
-cd yolo-dev-use1/
-echo -e "\n This will run terragrunt run-all apply and pass 'y' for create backend S3 bucket and apply changes"
-terragrunt run-all apply
+
+
+
