@@ -37,7 +37,7 @@ git clone https://github.com/gihanrv/yolo-devops.git
   
 ### You must have aws cli access before executes install.sh 
 
-2. Change following varible names in [env.hcl](yolo-dev-use1/env.hcl) file base on your aws accouts settings
+2. Change following variables names in [env.hcl](yolo-dev-use1/env.hcl) file base on your aws account settings
 ```
   - aws_region : default  = "us-east-1"
   - aws_region_short : default = "use1"
