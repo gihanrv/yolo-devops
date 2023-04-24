@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [[ $OSTYPE == 'darwin'* ]]; then
-  echo 'macOS'
-  brew install terragrunt
-fi
-
 function terraform-install() {
 echo "Checking Terraform . . ."
   [[ -f ${HOME}/bin/terraform ]] && echo "`${HOME}/bin/terraform version` already installed at ${HOME}/bin/terraform" && return 0
@@ -24,6 +19,12 @@ echo "Checking Terraform . . ."
 
 
 function terragrunt-install() {
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+  echo 'macOS Install terragrunt ...'
+  brew install terragrunt
+
+else
 echo "Checking Terragrunt . . ."
 	[[ -f ${HOME}/bin/terragrunt ]] && echo "Terragrunt `${HOME}/bin/terragrunt | grep -iA 2 version | tr -d '\n'` already installed at ${HOME}/bin/terragrunt" && return 0
 
@@ -37,13 +38,17 @@ echo "Checking Terragrunt . . ."
 						  fi
 
 						    echo "Installed: Terragrunt `${HOME}/bin/terragrunt | grep -iA 2 version | tr -d '\n'`"
+fi
 					    }
 
 					    terraform-install
 					    terragrunt-install
 
+if [[ $OSTYPE != 'darwin'* ]]; then
+          echo 'Reload Bash Profile'
+          alias brc='source ~/.bashrc'
+fi
 
-alias brc='source ~/.bashrc'
 cd yolo-dev-use1/
 echo -e "\n This will run terragrunt run-all apply and pass 'y' for create backend S3 bucket and apply changes"
 terragrunt run-all apply
