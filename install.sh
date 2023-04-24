@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+  echo 'macOS'
+  brew install terragrunt
+fi
+
 function terraform-install() {
 echo "Checking Terraform . . ."
   [[ -f ${HOME}/bin/terraform ]] && echo "`${HOME}/bin/terraform version` already installed at ${HOME}/bin/terraform" && return 0
