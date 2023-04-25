@@ -65,10 +65,10 @@ source ~/.bashrc  && cd yolo-dev-use1/ && terragrunt run-all apply
 ```
 * These steps will perform the following actions:
   - Install Terraform and Terragrunt if they are not already present in the system.
-  - move to [yolo-dev-use1](yolo-dev-use1) folder and execute terragrunt run-all apply (auto-approve creating backend S3 and applying Terragrunt changes)
+  - move to [yolo-dev-use1](yolo-dev-use1) folder and execute terragrunt run-all apply.
    
   ### Destroy
-4.1 Run uninstall.sh shell script  and Enter 'y' Destroy changes
+4.1 Run uninstall.sh shell script  and enter 'y' destroy changes
 * Please note that S3 bucket and Dynamodb table will not be delete ! you have to manually delete them
 ```
 chmod 775 uninstall.sh && ./uninstall.sh
