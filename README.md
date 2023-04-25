@@ -52,13 +52,13 @@ with --> ```subnet_ids = dependency.vpc.outputs.public_subnets```
 This will allow you to create EC2 instances in the public subnets.
 
 ### Installation
-3.1 Run the install.sh shell script to check dependency and install the latest version  
+3.1 Run the install.sh shell script to check dependency and install the latest version.
+```
 chmod 775 install.sh && ./install.sh 
 
 ```
-3.2
-After the installation, the following command will be displayed on the terminal. 
-Run it and enter 'y' Create a S3, DynamoDB table bucket to save terraform state and enter 'y' to apply changes.
+3.2 After the installation, the following command will be displayed on the terminal. 
+Run it and enter 'y' Create a S3 bucket ,DynamoDB table to save terraform state and enter 'y' to apply changes.
 ```
 source ~/.bashrc  && cd yolo-dev-use1/ && terragrunt run-all apply
 
